@@ -11,7 +11,7 @@ const newBirthday = process.argv[4];
 
 const addPerson = (firstName, lastName, birthday) => {
 
-  knex('famous_people')
+  return knex('famous_people')
   .insert( [{first_name: firstName, last_name: lastName, birthdate: birthday}] )
   .then(function(result) {
     console.log(result);
@@ -22,7 +22,6 @@ const addPerson = (firstName, lastName, birthday) => {
 }
 
 
-addPerson(newFirstName, newLastNamem, newBirthday)
-  .finally(function() {
+addPerson(newFirstName, newLastName, newBirthday).finally(function() {
     knex.destroy();
   })
